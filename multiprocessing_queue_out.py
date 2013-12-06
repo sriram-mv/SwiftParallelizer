@@ -10,7 +10,8 @@ def get_file(filename):
 if __name__ == '__main__':
     filename = get_file(sys.argv[1])
     jobs = []
-    for i in range(8):
+    number_threads = int(sys.argv[2])
+    for i in range(number_threads):
         p = multiprocessing.Process(target=multiprocessing_import_worker_queue_out.worker,args=(filename+'out',))
         jobs.append(p)
         p.start()

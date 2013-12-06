@@ -2,7 +2,7 @@ import requests
 import json
 import sys
 import uuid
-from marconi.tests.functional import helpers
+# from marconi.tests.functional import helpers
 # from endpoints import IDENTITY_URL,MARCONI_URL
 # from authentication import auth
 MARCONI_URL = 'http://127.0.0.1:8888/v1/queues/'
@@ -42,16 +42,16 @@ def claim_messages(custom_uuid,data,queue_name,limit):
     # print q.headers,q.content,q.status_code
     if response.status_code != 204:
         data = response.json()
-        print data
+        # print data
         message = json.loads(json.dumps(data[0]))
         firstsplit = message['href'].split('/')
         second_split = firstsplit[len(firstsplit)-1].split('?claim_id=')
         # message id followed by claim id
-        print second_split[0], second_split[1]
+        # print second_split[0], second_split[1]
         return (message['body'],second_split[0],second_split[1])
     else:
         return (response.status_code,0,0)
-        print (response,'0','0',response.status_code)
+        # print (response,'0','0',response.status_code)
 
 # Delete Message with claim
 def delete_messages_with_claim(custom_uuid,message_ids,queue_name,claim_id):

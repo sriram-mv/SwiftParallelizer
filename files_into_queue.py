@@ -3,14 +3,14 @@ import uuid
 from filesplit import file_splitter
 import sys 
 def files_in():
-    return file_splitter.split_file(sys.argv[1])
+    return file_splitter.split_file(sys.argv[1],sys.argv[2])
     # print (filename, directory,part_fies)
 
 
 def main():
     custom_uuid = uuid.uuid4()
     (filename, directory,part_files) =files_in()
-    print filename
+    # print filename
     new_filename=filename.split('.')
     final_filename = new_filename[0]
     marconi_queuing.create_queue(final_filename,custom_uuid)
